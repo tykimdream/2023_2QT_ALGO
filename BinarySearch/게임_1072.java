@@ -13,34 +13,31 @@ public class 게임_1072 {
         StringTokenizer st = new StringTokenizer(br.readLine());
         x = Integer.parseInt(st.nextToken());
         y= Integer.parseInt(st.nextToken());
-        z = (y * 100) /(x);
+        z = (int)((long)y * 100 /x);
 //        System.out.println(z);
-        int low = 1;
-        int high = 1000000000;
-        int answer = 1000000000;
+        int low = 0;
+        int high = (int)1e9;
+        int answer = -1;
         int mid = 0;
 
-        int last = z;
+//        if(x == y){
+//            System.out.println(-1);
+//            return;
+//        }
         while(low <= high){
             mid = (low + high) / 2;
-            int curRatio = ((y+mid) * 100) / (x + mid);
-//            if(z != curRatio){
-//                System.out.println(1);
-//            }
+            int curRatio = (int)((((long) y + mid) * 100) / (x + mid));
 //            System.out.println("curRatio" + curRatio);
             if(curRatio != z){
 //                System.out.println(mid);
-                last = curRatio;
-                answer = Math.min(mid, answer);
+//                answer = Math.min(mid, answer);
+                answer = mid;
                 high = mid - 1;
             }
             else{
                 low = mid + 1;
             }
         }
-        if(last == z){
-            System.out.println(-1);
-        } else
         System.out.println(answer);
 
     }
